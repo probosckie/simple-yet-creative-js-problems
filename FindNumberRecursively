@@ -1,0 +1,21 @@
+// by starting from the number 1 and repeatedly either adding 5 or multiplying by 3, 
+// an infinite set of numbers can be produced. How would you write a 
+// function that, given a number, tries to find a sequence of such additions and 
+// multiplications that produces that number? For example, the number 13 could be reached by first 
+// multiplying by 3 and then adding 5 twice, whereas the number 15 cannot be reached at all.
+
+function findValue(targetToFind, computedValue, newExpression) {
+  if(targetToFind === computedValue) {
+     console.log('found the path to computed value ', newExpression);
+     return null;
+  } else if(computedValue > targetToFind) {
+    return null  
+  } else {
+    findValue(targetToFind, computedValue + 5, newExpression+' + 5');
+    findValue(targetToFind, computedValue * 3, `(${newExpression}) * 3`);
+  }
+}
+
+findValue(13, 1, "1");
+
+
