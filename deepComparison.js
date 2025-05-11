@@ -11,17 +11,21 @@ function deepComparison(value1, value2) {
   //early exit scenarios - if plain values or different types
   const type1 = typeof value1, type2 = typeof value2, type1NotObject = type1 !== 'object', type2NotObject = type1 !== 'object';
   if(type1 !== type2 || (type1NotObject && type2NotObject && value1 !== value2)){
+    console.log('case 1')
     return false;
   }
   else if(value1 === null && value2 === null){
+    console.log('case 2')
     return true;
   }
   //one is object and one is null - return false
   else if (value1 === null || value2 === null && value1 != value2) {
+    console.log('case 3')
     return false;
   }
   //both are primitive values and are same
   else if(type1 === type2 && value1 === value2){
+    console.log('case 4')
     return true;
   }  
   //only one possibility - both are objects
@@ -29,13 +33,16 @@ function deepComparison(value1, value2) {
     let i;
     //different length of keys
     if (Object.keys(value1).length !== Object.keys(value2)){
+      console.log('case 4')
       return false;
     }
     //same number of keys
     for (i in value1) {
       if(!(i in value2)) {
+        console.log('case 5')
         return false;
       } else {
+        console.log('case 6')
         let v1 = value1[i], v2 = value2[i];
         return deepComparison(v1, v2)
       }
