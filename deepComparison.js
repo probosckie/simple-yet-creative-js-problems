@@ -9,7 +9,7 @@ The Object.keys function will be useful when you need to go over the prop- ertie
 */
 function deepComparison(value1, value2) {
   //early exit scenarios - if plain values or different types
-  const type1 = typeof value1, type2 = typeof value2, type1NotObject = type1 !== 'object', type2NotObject = type1 !== 'object';
+  const type1 = typeof value1, type2 = typeof value2, type1NotObject = type1 !== 'object', type2NotObject = type2 !== 'object';
   if(type1 !== type2 || (type1NotObject && type2NotObject && value1 !== value2)){
     console.log('case 1')
     return false;
