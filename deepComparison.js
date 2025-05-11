@@ -36,8 +36,8 @@ function deepComparison(value1, value2) {
       if(!(i in value2)) {
         return false;
       } else {
-        let value1 = keysOf1[i], value2 = keysOf2[i];
-        return deepComparison(value1, value2)
+        let v1 = value1[i], v2 = value2[i];
+        return deepComparison(v1, v2)
       }
     }
   } 
