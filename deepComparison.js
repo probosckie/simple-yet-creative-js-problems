@@ -9,45 +9,48 @@ The Object.keys function will be useful when you need to go over the prop- ertie
 */
 function deepComparison(value1, value2) {
   //early exit scenarios - if plain values or different types
-  const type1 = typeof value1, type2 = typeof value2, type1NotObject = type1 !== 'object', type2NotObject = type2 !== 'object';
-  if(type1 !== type2 || (type1NotObject && type2NotObject && value1 !== value2)){
-    console.log('case 1')
+  const type1 = typeof value1;
+  const type2 = typeof value2;
+  const type1NotObject = type1 !== "object";
+  const type2NotObject = type2 !== "object";
+  if (
+    type1 !== type2 ||
+    (type1NotObject && type2NotObject && value1 !== value2)
+  ) {
     return false;
-  }
-  else if(value1 === null && value2 === null){
-    console.log('case 2')
+  } else if (value1 === null && value2 === null) {
     return true;
   }
   //one is object and one is null - return false
-  else if (value1 === null || value2 === null && value1 != value2) {
-    console.log('case 3')
+  else if (value1 === null || (value2 === null && value1 != value2)) {
     return false;
   }
   //both are primitive values and are same
-  else if(type1 === type2 && type1NotObject && type2NotObject &&  value1 === value2){
-    console.log('case 4')
+  else if (
+    type1 === type2 &&
+    type1NotObject &&
+    type2NotObject &&
+    value1 === value2
+  ) {
     return true;
-  }  
+  }
   //only one possibility - both are objects
   else {
     let i;
     //different length of keys
-    if (Object.keys(value1).length !== Object.keys(value2)){
-      console.log('case 4')
+    if (Object.keys(value1).length !== Object.keys(value2).length) {
       return false;
     }
     //same number of keys
     for (i in value1) {
-      if(!(i in value2)) {
-        console.log('case 5')
+      if (!(i in value2)) {
         return false;
       } else {
-        console.log('case 6')
-        let v1 = value1[i], v2 = value2[i];
-        const result = deepComparison(v1, v2); 
-        console.log('final result (case 6) = ', result);
+        let v1 = value1[i],
+          v2 = value2[i];
+        const result = deepComparison(v1, v2);
         return result;
       }
     }
-  } 
+  }
 }
