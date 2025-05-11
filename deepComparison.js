@@ -24,7 +24,7 @@ function deepComparison(value1, value2) {
     return false;
   }
   //both are primitive values and are same
-  else if(type1 === type2 && value1 === value2){
+  else if(type1 === type2 && type1NotObject && type2NotObject &&  value1 === value2){
     console.log('case 4')
     return true;
   }  
