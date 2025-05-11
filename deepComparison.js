@@ -44,7 +44,9 @@ function deepComparison(value1, value2) {
       } else {
         console.log('case 6')
         let v1 = value1[i], v2 = value2[i];
-        return deepComparison(v1, v2)
+        const result = deepComparison(v1, v2); 
+        console.log('final result (case 6) = ', result);
+        return result;
       }
     }
   } 
