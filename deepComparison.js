@@ -7,11 +7,9 @@ If it produces "object" for both values, you should do a deep com-parison. But y
 produces "object".
 The Object.keys function will be useful when you need to go over the prop- erties of objects to compare them.
 */
-
-
-function deepComparison(value1, value2){
+function deepComparison(value1, value2) {
   //early exit scenarios - if plain values or different types
-  const type1 = typeof value1, type2 = typeof value2, type1NotObject = type1 !== 'object', type2NotObject = type1 !== 'object', ;
+  const type1 = typeof value1, type2 = typeof value2, type1NotObject = type1 !== 'object', type2NotObject = type1 !== 'object';
   if(type1 !== type2 || (type1NotObject && type2NotObject && value1 !== value2)){
     return false;
   }
@@ -21,6 +19,10 @@ function deepComparison(value1, value2){
   //one is object and one is null - return false
   else if (value1 === null || value2 === null && value1 != value2) {
     return false;
+  }
+  //both are primitive values and are same
+  else if(type1 === type2 && value1 === value2){
+    return true;
   }  
   //only one possibility - both are objects
   else {
@@ -38,6 +40,5 @@ function deepComparison(value1, value2){
         return deepComparison(value1, value2)
       }
     }
-  }
-  
+  } 
 }
